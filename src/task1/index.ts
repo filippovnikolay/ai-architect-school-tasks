@@ -44,7 +44,7 @@ const SYSTEM_PROMPT = `
     Final Answer: the final recommended list of 3 products
 `.trim();
 
-async function think(productList: string[]): Promise<string> {
+async function suggestExtraProducts(productList: string[]): Promise<string> {
     const response = await client.chat.completions.create({
         model: MODEL,
         temperature: 0,
@@ -72,7 +72,7 @@ interface Transaction {
     loyalty_points: number;
 }
 
-export function getProductsByCustomer(customerId: string): string[] {
+export function getProductList(customerId: string): string[] {
     const dataPath = path.join(__dirname, "data/transactions.json");
     const transactions: Transaction[] = JSON.parse(
         fs.readFileSync(dataPath, "utf-8")
@@ -87,7 +87,7 @@ export function getProductsByCustomer(customerId: string): string[] {
 
 async function main(): Promise<void> {
     // 8381, 2020, 2494, 3068
-    const answer = await think(getProductsByCustomer("8381"));
+    const answer = await suggestExtraProducts(getProductList("8381"));
 
     console.log("\n=== Consultant ===\n");
     console.log(answer);
