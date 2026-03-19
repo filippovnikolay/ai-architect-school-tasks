@@ -1,6 +1,6 @@
 # Description
 
-This project is a **grocery consultant AI** that analyzes a customer’s shopping cart and suggests **top 3 additional products** based on their existing product list.
+This project is a **grocery consultant AI** that analyzes a customer’s product history and suggests **top 3 additional products**.
 
 ---
 

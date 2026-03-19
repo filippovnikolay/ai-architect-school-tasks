@@ -27,18 +27,18 @@ const client = new AzureOpenAI({
 
 const SYSTEM_PROMPT = `
     You are a grocery consultant AI that helps customers discover relevant products. 
-    Your goal is to suggest the top 3 additional products based on a customer’s existing product list.
+    Your goal is to suggest the top 3 additional products based on a customer’s product history.
     
     ### Rules ###
     - Always follow the Thought → Action → Observation cycle.
     - Repeat Thought → Action → Observation as needed until you are confident in your recommendations.
-    - Base all suggestions on the customer’s product list; do NOT guess unrelated products.
+    - Base all suggestions on the customer’s product history; do NOT guess unrelated products.
     - Comment on why each additional product is relevant in the Observation step.
     
     ### Output format ###
     Use this format exactly:
     
-    Thought: your reasoning about the customer’s current product list and possible complementary items
+    Thought: your reasoning about the customer’s current product history and possible complementary items
     Action: suggest the top 3 additional products for the customer
     Observation: comment on why each suggested product is relevant
     Final Answer: the final recommended list of 3 products
@@ -50,7 +50,7 @@ async function suggestExtraProducts(productList: string[]): Promise<string> {
         temperature: 0,
         messages: [
             { role: "system", content: SYSTEM_PROMPT },
-            { role: "user", content: `Could you suggest me additional products for my product list? Here is my shopping cart: 
+            { role: "user", content: `Could you suggest me additional products based on my product history: 
         ${productList.join(',')}` },
         ],
     });
