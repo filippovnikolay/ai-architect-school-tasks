@@ -1,9 +1,8 @@
 import "dotenv/config";
 import { AzureOpenAI } from "openai";
-import * as readline from "node:readline/promises";
-import { stdin as input, stdout as output } from "node:process";
 import dotenv from "dotenv";
 import path from "path";
+import fs from "fs";
 
 dotenv.config({
     path: path.join(__dirname, "../..", ".env"),
@@ -27,66 +26,70 @@ const client = new AzureOpenAI({
 });
 
 const SYSTEM_PROMPT = `
-    ### Initial instructions ###
-    You are an AI agent that follows the ReAct (Reason + Act) pattern to solve problems or answer questions step-by-step.
-    
-    At each step:
-    1. Think about the problem.
-    2. Decide the next action.
-    3. Observe the result of that action.
-    4. Continue until the solution is reached.
+    You are a grocery consultant AI that helps customers discover relevant products. 
+    Your goal is to suggest the top 3 additional products based on a customer’s existing product list.
     
     ### Rules ###
-    - Always follow the exact output format below.
-    - Repeat the Thought → Action → Observation cycle as needed.
-    - Before producing the final answer, perform a self-verification step to check correctness.
-    - If solution does not exist for the provided question, type "There is no solution for your question.".
-    - If the verification reveals an issue, continue reasoning until the correct solution is found.
-    - Stop only when you are confident in the verified result.
+    - Always follow the Thought → Action → Observation cycle.
+    - Repeat Thought → Action → Observation as needed until you are confident in your recommendations.
+    - Base all suggestions on the customer’s product list; do NOT guess unrelated products.
+    - Comment on why each additional product is relevant in the Observation step.
     
     ### Output format ###
     Use this format exactly:
-    Thought: reasoning about the problem
-    Action: the next step to take
-    Observation: result of the action
-    Final Answer: the final verified solution
+    
+    Thought: your reasoning about the customer’s current product list and possible complementary items
+    Action: suggest the top 3 additional products for the customer
+    Observation: comment on why each suggested product is relevant
+    Final Answer: the final recommended list of 3 products
 `.trim();
 
-async function think(question: string): Promise<string> {
+async function think(productList: string[]): Promise<string> {
     const response = await client.chat.completions.create({
         model: MODEL,
         temperature: 0,
         messages: [
             { role: "system", content: SYSTEM_PROMPT },
-            { role: "user", content: question },
+            { role: "user", content: `Could you suggest me additional products for my product list? Here is my shopping cart: 
+        ${productList.join(',')}` },
         ],
     });
 
     return response.choices?.[0]?.message?.content ?? "";
 }
 
-async function askQuestion(): Promise<string> {
-    const rl = readline.createInterface({ input, output });
+interface Transaction {
+    customer_id: string;
+    store_name: string;
+    transaction_date: string;
+    aisle: string;
+    product_name: string;
+    quantity: string;
+    unit_price: number;
+    total_amount: number;
+    discount_amount: number;
+    final_amount: number;
+    loyalty_points: number;
+}
 
-    try {
-        const question = await rl.question("Enter your question: ");
-        return question.trim();
-    } finally {
-        rl.close();
-    }
+export function getProductsByCustomer(customerId: string): string[] {
+    const dataPath = path.join(__dirname, "data/transactions.json");
+    const transactions: Transaction[] = JSON.parse(
+        fs.readFileSync(dataPath, "utf-8")
+    );
+
+    const products: string[] = transactions
+        .filter(t => t.customer_id === customerId)
+        .map(t => t.product_name);
+
+    return Array.from(new Set(products));
 }
 
 async function main(): Promise<void> {
-    const question = await askQuestion();
+    // 8381, 2020, 2494, 3068
+    const answer = await think(getProductsByCustomer("8381"));
 
-    if (!question) {
-        console.log("No question provided.");
-        return;
-    }
-
-    const answer = await think(question);
-
-    console.log("\n=== Assistant ===\n");
+    console.log("\n=== Consultant ===\n");
     console.log(answer);
 }
 

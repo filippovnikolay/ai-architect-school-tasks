@@ -1,22 +1,14 @@
 # Description
 
-This project demonstrates a minimal **AI agent CLI tool** that interacts with an Azure OpenAI-compatible API.
+This project is a **grocery consultant AI** that analyzes a customer’s shopping cart and suggests **top 3 additional products** based on their existing product list.
 
-The assistant uses the **ReAct reasoning pattern**, where the model explains its reasoning process using the following structured format:
+---
 
-- Thought
-- Action
-- Observation
-- Final Answer
+## Features
 
-This approach encourages the model to reason step-by-step before producing the final result.
-
-The application:
-
-- Reads a question from the command line
-- Sends the prompt to an Azure OpenAI endpoint
-- Returns a structured reasoning response
-- Displays the answer in the terminal
+- Extracts products purchased by a specific customer from a local json file.
+- Provides **reasoning and observation** for why each product is suggested.
+- Outputs a **final verified list** of recommended products.
 
 ---
 
@@ -39,60 +31,41 @@ npx ts-node src/task1/index.ts
 
 # Examples
 
-Question:
+Example 1:
 ```
-Solve the linear equations: 10x - 1 = 15 - 6x
-```
+=== Consultant ===
 
-Output:
-```
-=== Assistant ===
+Thought: The current product list includes yogurt, apples, and milk. These items suggest a focus on healthy snacks and breakfast options. To complement these products, I should consider items that can enhance the use of yogurt and milk, as well as provide additional healthy snacks or breakfast components.
 
-Thought: I need to solve the linear equation \(10x - 1 = 15 - 6x\). To do this, I will first isolate the variable \(x\) on one side of the equation.
+Action: I suggest the following additional products:
+1. Granola
+2. Honey
+3. Oats
 
-Action: I will add \(6x\) to both sides of the equation to combine the \(x\) terms.
+Observation: 
+1. Granola: This is a great addition because it pairs well with yogurt, making for a nutritious and filling breakfast or snack option. It adds texture and flavor to the yogurt.
+2. Honey: This can be used to sweeten yogurt or oatmeal, providing a natural sweetener that complements the flavors of both yogurt and apples.
+3. Oats: Oats can be used to make overnight oats with yogurt and milk, creating a wholesome breakfast option. They also provide fiber and can be a healthy addition to smoothies.
 
-Observation: The equation becomes \(10x + 6x - 1 = 15\), which simplifies to \(16x - 1 = 15\).
-
-Thought: Now, I need to isolate \(16x\) by adding \(1\) to both sides of the equation.
-
-Action: I will add \(1\) to both sides.
-
-Observation: The equation now is \(16x = 15 + 1\), which simplifies to \(16x = 16\).
-
-Thought: Next, I will solve for \(x\) by dividing both sides of the equation by \(16\).
-
-Action: I will divide both sides by \(16\).
-
-Observation: The equation simplifies to \(x = 1\).
-
-Thought: I will verify the solution by substituting \(x = 1\) back into the original equation to ensure both sides are equal.
-
-Action: Substitute \(x = 1\) into the original equation \(10x - 1 = 15 - 6x\).
-
-Observation: The left side becomes \(10(1) - 1 = 10 - 1 = 9\) and the right side becomes \(15 - 6(1) = 15 - 6 = 9\). Both sides are equal.
-
-Final Answer: The final verified solution is \(x = 1\).
-```
----
-
-Question (no solution):
+Final Answer: Granola, Honey, Oats
 
 ```
-Solve the linear equations: x = 5 + x
+Example 2:
 ```
+=== Consultant ===
 
-Answer:
-```
-=== Assistant ===
+Thought: The customer has a diverse product list that includes protein (Ground Beef), carbohydrates (Cereal, Potatoes, Pasta), and a staple food item (Pasta). To complement these items, I should consider products that can enhance meals or provide additional nutrition. 
 
-Thought: The equation given is x = 5 + x. To solve for x, I need to isolate x on one side of the equation. 
+Action: I suggest the following top 3 additional products:
+1. Tomato Sauce
+2. Vegetables (like Bell Peppers or Broccoli)
+3. Cheese
 
-Action: Subtract x from both sides of the equation to simplify it. 
+Observation: 
+1. **Tomato Sauce**: This pairs well with both the Ground Beef and Pasta, allowing for a classic spaghetti dish or a hearty beef stew. It adds flavor and moisture to the meals.
+2. **Vegetables**: Adding fresh vegetables can enhance the nutritional value of meals made with Ground Beef and Pasta. They can be sautéed with the beef or served as a side with potatoes.
+3. **Cheese**: Cheese can be used in various ways, such as topping pasta dishes or adding flavor to casseroles made with Ground Beef and Potatoes. It also complements the cereal if the customer enjoys savory breakfast options.
 
-Observation: The equation becomes 0 = 5, which is a contradiction. 
+Final Answer: Tomato Sauce, Vegetables (like Bell Peppers or Broccoli), Cheese
 
-Thought: Since 0 = 5 is not a true statement, it indicates that there is no value of x that can satisfy the original equation. 
-
-Final Answer: There is no solution for your question.
 ```
