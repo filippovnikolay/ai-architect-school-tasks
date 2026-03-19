@@ -87,7 +87,7 @@ export function getProductList(customerId: string): string[] {
 
 async function main(): Promise<void> {
     // 8381, 2020, 2494, 3068
-    const answer = await suggestExtraProducts(getProductList("8381"));
+    const answer = await suggestExtraProducts(getProductList("2020"));
 
     console.log("\n=== Consultant ===\n");
     console.log(answer);
