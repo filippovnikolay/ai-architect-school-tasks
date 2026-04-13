@@ -8,7 +8,7 @@ dotenv.config({
     path: path.join(__dirname, "../..", ".env"),
 });
 
-const API_KEY = process.env.DIAL_API_KEY;
+const API_KEY = process.env.OPENAI_API_KEY;
 const MODEL = "gpt-4.1-mini-2025-04-14";
 const API_VERSION = "2024-02-01";
 const ENDPOINT = "https://ai-proxy.lab.epam.com";

@@ -1,0 +1,88 @@
+{
+     "bestCandidate": {
+          "candidateId": "83816738",
+          "reason": "Candidate 83816738 demonstrates the highest alignment with the vacancy description 'Senior Java Spring backend engineer with REST APIs and microservices.' This candidate has over 3 years of relevant experience with Java/J2EE technologies, extensive use of Spring modules including Spring Boot, REST, and experience with microservices architecture. Their skills include Java, Spring Boot, RESTful web services, microservices, and front-end technologies matching the vacancy needs. Experience is deep and relevant, including automation and test-driven development, reflecting seniority and technical suitability for backend engineering roles with REST APIs and microservices."
+     },
+     "candidates": [
+          {
+               "candidateId": "23464505",
+               "category": "AVIATION",
+               "scores": {
+                    "skillsMatch": 65,
+                    "experience": 60,
+                    "domain": 70,
+                    "seniority": 45
+               },
+               "evaluation": {
+                    "skillsMatch": "Candidate has experience in Java, J2EE, Spring MVC, AngularJS, Hibernate but at an internship and early career level; not strong with microservices or advanced Spring Boot features.",
+                    "experience": "Experience is mostly internship with some test and development exposure; lacks seniority and depth expected of a senior engineer.",
+                    "domain": "Category Aviation somewhat less aligned with IT/software engineering vacancy; domain relevance moderate.",
+                    "seniority": "Intern-level experience; not fitting senior engineer seniority."
+               }
+          },
+          {
+               "candidateId": "83816738",
+               "category": "INFORMATION-TECHNOLOGY",
+               "scores": {
+                    "skillsMatch": 95,
+                    "experience": 90,
+                    "domain": 85,
+                    "seniority": 85
+               },
+               "evaluation": {
+                    "skillsMatch": "Strong match with Java/J2EE, Spring modules, RESTful web services, microservices, AngularJS, ReactJS and relevant backend skills.",
+                    "experience": "Over 3 years software development experience in relevant technologies and domains, including automation and agile processes.",
+                    "domain": "Relevant IT domain experience matching vacancy requirements.",
+                    "seniority": "Experience consistent with senior engineer role; shows leadership and advanced skills."
+               }
+          },
+          {
+               "candidateId": "85101052",
+               "category": "DESIGNER",
+               "scores": {
+                    "skillsMatch": 75,
+                    "experience": 80,
+                    "domain": 60,
+                    "seniority": 75
+               },
+               "evaluation": {
+                    "skillsMatch": "Good skills in Java, Spring 3, jQuery, Bootstrap, but lacks explicit mention of microservices or REST API development with Spring Boot.",
+                    "experience": "8.5 years of IT/software development experience primarily with Java/J2EE suited for backend roles.",
+                    "domain": "Category Designer is less aligned with software engineering domain; actual experience is software development.",
+                    "seniority": "Demonstrates seniority with many years of experience and certifications."
+               }
+          },
+          {
+               "candidateId": "22351830",
+               "category": "CONSULTANT",
+               "scores": {
+                    "skillsMatch": 85,
+                    "experience": 85,
+                    "domain": 90,
+                    "seniority": 80
+               },
+               "evaluation": {
+                    "skillsMatch": "Good knowledge of Java/JEE, Spring MVC, REST, RabbitMQ, and related technologies; also focuses on API development and performance.",
+                    "experience": "7 years professional IT experience with relevant Java and integration technologies.",
+                    "domain": "Experience includes identity and access management domain and telecom, aligns well with software engineering roles.",
+                    "seniority": "Experienced consultant level fitting senior engineer role."
+               }
+          },
+          {
+               "candidateId": "28176889",
+               "category": "CHEF",
+               "scores": {
+                    "skillsMatch": 10,
+                    "experience": 10,
+                    "domain": 5,
+                    "seniority": 5
+               },
+               "evaluation": {
+                    "skillsMatch": "No relevant Java, Spring or backend development skills present.",
+                    "experience": "No relevant software development experience.",
+                    "domain": "Category Chef unrelated to IT domain.",
+                    "seniority": "Not applicable for senior software engineer role."
+               }
+          }
+     ]
+}
