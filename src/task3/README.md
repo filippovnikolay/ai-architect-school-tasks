@@ -113,8 +113,8 @@ The flow is split into two sequence diagrams so it matches the code: `weather`, 
 
 | Script | Path | What it does |
 |--------|------|----------------|
-| App demo | `main.ts` | Hardcoded `hardcodedQuestion`, prints route, tools, and final answer. Run: `npm run task3` or `npx ts-node src/task3/main.ts`. |
-| Evaluation | `test/main.ts` | Runs the full pipeline on every row in `test/evalDataset.ts`, prints **routing accuracy** and **tool appropriateness**. Run: `npm run task3:eval` or `npx ts-node src/task3/test/main.ts`. |
+| App demo | `main.ts` | Hardcoded `hardcodedQuestion`, prints route, tools, and final answer.|
+| Evaluation | `test/main.ts` | Runs the full pipeline on every row in `test/evalDataset.ts`, prints **routing accuracy** and **tool appropriateness**. |
 
 ---
 
