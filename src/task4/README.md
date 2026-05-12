@@ -4,10 +4,10 @@ Two tracks share [`config/client.ts`](https://github.com/filippovnikolay/ai-arch
 
 **Run (repo root)**
 
-| Track | Command | Entry |
-| --- | --- | --- |
-| Prompt injection | `npm run task4:prompt-injection-demo` | [`prompt-injection/main.ts`](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/main.ts) |
-| Improper output handling | `npm run task4:improper-output-handling-demo` | [`improper-output-handling/main.ts`](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/improper-output-handling/main.ts) |
+| Track | Entry                                         |
+| --- |-----------------------------------------------|
+| Prompt injection  | [`prompt-injection/main.ts`](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/main.ts) |
+| Improper output handling | [`improper-output-handling/main.ts`](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/improper-output-handling/main.ts) |
 
 **L × I** (1–5) are static lab ratings; overall level = matrix in [appendix](#appendix-l--i--overall).
 
@@ -96,17 +96,7 @@ Model/temperature shifts outcomes—use tables for **vulnerable vs mitigated** c
 | ID | Category | This repo |
 | --- | --- | --- |
 | LLM01 | Prompt injection | Track 1 |
-| LLM02 | Sensitive disclosure | Track 1 (markers in output) |
 | LLM05 | Improper output handling | Track 2 |
-| LLM07 | System prompt leakage | Track 1 (echo heuristic) |
-
----
-
-## Limitations
-
-Incomplete `leak` heuristics · no real `innerHTML` / HTTP in repo · L/I are doc defaults, not FAIR · add ASVS / NIST AI RMF for prod.
-
----
 
 ## Appendix — L / I / overall
 
