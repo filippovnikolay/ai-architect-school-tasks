@@ -2,7 +2,7 @@
 
 Rows measure whether model output (vulnerable: raw; mitigated: after JSON parse + HTML escape) still matches unsafe-sink heuristics.
 
-Generated: `2026-05-05T07:01:50.186Z`
+Generated: `2026-05-12T15:09:51.414Z`
 
 | Scenario Id | Vulnerable sink unsafe | Mitigated sink unsafe |
 | --- | --- | --- |
