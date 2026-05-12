@@ -13,8 +13,10 @@ Each scenario runs **vulnerable** vs **mitigated** flows; heuristics set `leak` 
 
 ## Track 1 — Prompt injection
 
-The confidential brief is [**CONFIDENTIAL_SYSTEM_BODY** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/domain/secrets.ts#L43-L50) — **AcmeCorp SupportBot**, secret bullets, politeness/FAQ rules. 
-On the **vulnerable** path that text is folded into one [**user blob** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/flows/vulnerableFlow.ts#L14-L24) with the attacker; the chat call uses **only** [**user-role messages** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/flows/vulnerableFlow.ts#L26-L30) (no API `system` prompt). 
+The confidential brief is [**CONFIDENTIAL_SYSTEM_BODY** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/domain/secrets.ts#L43-L50) — **AcmeCorp SupportBot**, secret bullets, politeness/FAQ rules.
+
+On the **vulnerable** path that text is folded into one [**user blob** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/flows/vulnerableFlow.ts#L14-L24) with the attacker; the chat call uses **only** [**user-role messages** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/flows/vulnerableFlow.ts#L26-L30) (no API `system` prompt).
+
 On the **mitigated** path the API system prompt is [**SYSTEM_WITH_BOUNDARIES** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/flows/mitigatedFlow.ts#L8-L19) (policy + delimiter/refusal rules). Every scenario’s **user** text is red‑team mail that tries to **exfil those marker lines verbatim** (or the whole configuration block) into the customer‑visible assistant reply.
 
 | Piece | Link |
@@ -49,7 +51,9 @@ On the **mitigated** path the API system prompt is [**SYSTEM_WITH_BOUNDARIES** (
 ## Track 2 — Improper output handling
 
 **MarketingSnippetBot** for an internal admin dashboard. 
-**Vulnerable** API system prompt: [**SINK_SYSTEM** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/improper-output-handling/flows/vulnerableFlow.ts#L3-L10) — full assistant message → `preview.innerHTML = modelOutput`, no sanitization; HTML when the user asks for layout/emphasis. Scenarios pose as operators asking for banners, links, counters, or embeds so the model returns **XSS / SSRF‑shaped** strings if it complies. 
+
+**Vulnerable** API system prompt: [**SINK_SYSTEM** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/improper-output-handling/flows/vulnerableFlow.ts#L3-L10) — full assistant message → `preview.innerHTML = modelOutput`, no sanitization; HTML when the user asks for layout/emphasis. Scenarios pose as operators asking for banners, links, counters, or embeds so the model returns **XSS / SSRF‑shaped** strings if it complies.
+
 **Mitigated** API system prompt: [**SYSTEM** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/improper-output-handling/flows/mitigatedFlow.ts#L4-L10) — JSON `headline` only, plain text, forbid HTML/handlers/metadata URLs; server HTML‑escapes before DOM. Same attacks probe whether that contract plus post‑processing blocks harmful output.
 
 | Piece | Link |
