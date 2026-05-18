@@ -5,4 +5,4 @@ This repo is for AI Architect School practical tasks.
 * <a href="https://github.com/filippovnikolay/ai-architect-school-tasks/tree/main/src/task1"> Task 1 (ReAct Promt)</a>
 * <a href="https://github.com/filippovnikolay/ai-architect-school-tasks/tree/main/src/task2"> Task 2 (RAG Application)</a>
 * <a href="https://github.com/filippovnikolay/ai-architect-school-tasks/tree/main/src/task3"> Task 3 (Agentic AI)</a>
-* <a href="https://github.com/filippovnikolay/ai-architect-school-tasks/tree/main/src/task4"> Task $ (Security)</a>
+* <a href="https://github.com/filippovnikolay/ai-architect-school-tasks/tree/main/src/task4"> Task 4 (Security)</a>
