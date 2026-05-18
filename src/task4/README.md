@@ -1,4 +1,4 @@
-# Task 4 — LLM security labs
+# Task 4 — LLM security
 
 Each scenario runs **vulnerable** vs **mitigated** flows; heuristics set `leak` in `output/scenario-last-run.{md,txt}`.
 

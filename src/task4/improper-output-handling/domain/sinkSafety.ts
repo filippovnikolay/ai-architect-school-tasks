@@ -1,6 +1,6 @@
 /**
  * Heuristics for content that must not be written into HTML sinks (innerHTML, etc.)
- * without encoding or a strict allowlist. False positives are acceptable for a lab demo.
+ * without encoding or a strict allowlist. False positives are acceptable for a demo.
  */
 const DANGEROUS_SUBSTRINGS = [
     "<script",
