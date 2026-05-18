@@ -13,6 +13,8 @@ Each scenario runs **vulnerable** vs **mitigated** flows; heuristics set `leak` 
 
 ## Track 1 — Prompt injection
 
+Scenarios from: https://kb.epam.com/pages/viewpage.action?spaceKey=EPMGPT&title=Prompt+Injection+Cheat+Sheet
+
 The confidential brief is [**CONFIDENTIAL_SYSTEM_BODY** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/domain/secrets.ts#L43-L50) — **AcmeCorp SupportBot**, secret bullets, politeness/FAQ rules.
 
 On the **vulnerable** path that text is folded into one [**user blob** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/flows/vulnerableFlow.ts#L14-L24) with the attacker; the chat call uses **only** [**user-role messages** (source)](https://github.com/filippovnikolay/ai-architect-school-tasks/blob/main/src/task4/prompt-injection/flows/vulnerableFlow.ts#L26-L30) (no API `system` prompt).
